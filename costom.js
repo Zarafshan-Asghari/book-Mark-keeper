@@ -14,7 +14,6 @@ let bookmarks = [];
 function displayForm() {
   overlayEl.classList.remove("hidden");
   starIcon.classList.remove("star");
-  websiteNameInput.focus();
   // remove input after saved
   websiteNameInput.value = "";
   urlInput.value = "";
@@ -63,9 +62,12 @@ function fetchBookmarks() {
 
   // * the process of creating url div and it's childern.
   function createElements() {
+    // bookmarks.forEach(bookmark);
+
     websiteNameInput.focus();
     // creat a div inside bookmark container
     const child = document.createElement("div");
+    child.setAttribute("id", "child");
     const remove = document.createElement("div");
     const removeIcon = document.createElement("span");
     const link = document.createElement("a");
@@ -115,7 +117,6 @@ function fetchBookmarks() {
       url: url,
     };
     bookmarks.push(bookmark);
-    fetchBookmarks();
     localStorage.setItem("myBookmarks", JSON.stringify(bookmarks));
   }
 }
