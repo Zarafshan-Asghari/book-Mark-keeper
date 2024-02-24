@@ -18,7 +18,7 @@
         title="add a new BookMark"
         class="text-white text-5xl cursor-pointer select-none focus:text-rose-700"
       >
-        <ion-icon name="star-outline" id="star" class="star"></ion-icon>
+        <ion-icon name="star-outline" id="star" class="star">*</ion-icon>
 
         <!-- <ion-icon name="star"></ion-icon> -->
       </span>
@@ -32,7 +32,7 @@
       <!-- <div class=""> -->
       <div
         id="modal"
-        class="modal bg-zinc-50 rounded-sm shadow-md space-y-2 w-[300px]"
+        class="modal bg-zinc-50 rounded-sm shadow-md space-y-2 w-[380px] md:w-[500px]"
       >
         <div class="flex justify-between items-center bg-zinc-800 p-2">
           <p class="capitalize text-zinc-100">add a book mark</p>
@@ -51,14 +51,14 @@
             id="websiteName"
             type="text"
             required
-            class="mb-4 outline-none rounded-md px-2 placeholder:text-sm border border-rose-700 placeholder:text-rose-600"
+            class="mb-4 caret-rose-700 outline-none rounded-md py-1 px-2 placeholder:text-sm border border-rose-700 placeholder:text-rose-600"
             placeholder="website Name"
           />
           <label for="url" class="uppercase text-sm">url</label>
           <input
             id="url"
             required
-            class="mb-4 outline-none rounded-md px-2 placeholder:text-sm border border-rose-700 placeholder:text-rose-600"
+            class="mb-4 caret-rose-700 outline-none rounded-md py-1 px-2 placeholder:text-sm border border-rose-700 placeholder:text-rose-600"
             placeholder="url"
           />
           <button
@@ -81,6 +81,7 @@
     </div>
 
     <!-- script file -->
-    <script src="costom.js"></script>
+    <script src="./script.js"></script>
+    <!-- <script src="costom.js"></script> -->
   </body>
 </html>

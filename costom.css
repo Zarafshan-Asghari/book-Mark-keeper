@@ -45,3 +45,8 @@ body {
     color: gray;
   }
 }
+.flex{
+  display:flex,
+  gap:8px,
+  items:center,
+}

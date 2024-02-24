@@ -35,39 +35,38 @@ function fetchBookmarks() {
   // to restore bookmarks
   if (localStorage.getItem("myBookmarks")) {
     bookmarks = JSON.parse(localStorage.getItem("myBookmarks"));
-    // }
-    //  else {
-    //   // creat book mark
-    //   bookmarks = [
-    //     {
-    //       webname: "google",
-    //       url: "https://google.com",
-    //     },
-    //   ];
-    //   localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
-    // }
-    console.log(bookmarks);
+  } else {
+    // creat book mark
+    bookmarks = [
+      {
+        webname: "google",
+        url: "https://google.com",
+      },
+    ];
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
   }
+  console.log(bookmarks);
+}
 
-  saveBookmark.addEventListener("click", (e) => {
-    e.preventDefault();
-    hideForm();
-    if (websiteNameInput.value === "" || InputEvent.value === "") {
-      // TODO avoid to creat empty div.
-      alert("please fill the inputs");
-    } else {
-      createElements();
-    }
-  });
+saveBookmark.addEventListener("click", (e) => {
+  e.preventDefault();
+  hideForm();
+  if (websiteNameInput.value === "" || InputEvent.value === "") {
+    // TODO avoid to creat empty div.
+    alert("please fill the inputs");
+  } else {
+    createElements();
+  }
+});
 
-  // * the process of creating url div and it's childern.
-  function createElements() {
-    // bookmarks.forEach(bookmark);
-
-    websiteNameInput.focus();
-    // creat a div inside bookmark container
+// * the process of creating url div and it's childern.
+function createElements() {
+  websiteNameInput.focus();
+  // creat a div inside bookmark container for each bookmark
+  bookmarks.forEach((bookmark) => {
+    const { webname, url } = bookmark;
+    console.log(websiteNameInput, url);
     const child = document.createElement("div");
-    child.setAttribute("id", "child");
     const remove = document.createElement("div");
     const removeIcon = document.createElement("span");
     const link = document.createElement("a");
@@ -99,9 +98,10 @@ function fetchBookmarks() {
 
     child.append(remove, link);
     remove.appendChild(removeIcon);
+
     // child.appendChild(link);
 
-    const url = urlInput.value;
+    // const url = urlInput.value;
     link.innerHTML = websiteNameInput.value;
     if (!url.includes("https", "http")) {
       link.setAttribute("href", `https://${url}`);
@@ -110,15 +110,15 @@ function fetchBookmarks() {
       link.setAttribute("href", url);
       link.setAttribute("target", "_blank");
     }
+  });
 
-    // * to save bookmarksin local storage
-    const bookmark = {
-      webname: websiteNameInput.value,
-      url: url,
-    };
-    bookmarks.push(bookmark);
-    localStorage.setItem("myBookmarks", JSON.stringify(bookmarks));
-  }
+  // * to save bookmarksin local storage
+  const bookmark = {
+    webname: websiteNameInput.value,
+    url: url,
+  };
+  bookmarks.push(bookmark);
+  localStorage.setItem("myBookmarks", JSON.stringify(bookmarks));
 }
 
 fetchBookmarks();
